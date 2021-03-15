@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>ORDER ONLINE</title>
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="pizza.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+
+            #txtCity{
+
+                width: 60px;;
+
+            }
+
+            #txtState,#txtZip{
+
+                width: 40px;;
+
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <form>
+
+        <h1>ORDER ONLINE</h1>
+
+        <h3>Please enter your infomation:</h3>
+
+        <table>
+
+            <tr>
+
+                <td>Name: </td>
+
+                <td>
+
+                    <input type="text" id="txtName"/>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Address: </td>
+
+                <td>
+
+                    <input type="text" id="txtAddress"/>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>City: </td>
+
+                <td>
+                  <input type="text" id="txtCity"/>
+                </td>
+
+              </tr>
+              <tr>
+
+                <td>Street Address:</td>
+
+                <td>
+                    <input type="text" id="txtStreet"/>
+
+                    Zip :
+
+                    <input type="text" id="txtZip"/>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Phone: </td>
+
+                <td>
+
+
+
+                    <input type="text" id="txtPhone"/>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Email: </td>
+
+                <td>
+
+
+
+                    <input type="text" id="txtEmail"/>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+        <h3>Please choose the size of the pizza:</h3>
+
+
+      <div class="myDiv">
+        <input type="radio" name="pizzaSize" value="Small">Small
+
+        <input type="radio" name="pizzaSize" value="Medium">Medium
+
+        <input type="radio" name="pizzaSize" value="Large">Large
+
+      </div>
+
+        <h3>Please choose a pizza topping:</h3>
+
+
+
+        <div class="top">
+
+          <input type="checkbox" name="pizzaToppings" value="Pepperoni"/>Pepperoni
+
+          <input type="checkbox" name="pizzaToppings" value="Tomato Sauce"/>Tomato Sauce
+
+          <input type="checkbox" name="pizzaToppings" value="Sausage"/>Sausage
+
+          <input type="checkbox" name="pizzaToppings" value="Mushrooms"/>Mushrooms
+
+          <input type="checkbox" name="pizzaToppings" value="Pineapple"/>Pineapple
+          <br>
+
+          <input type="checkbox" name="pizzaToppings" value="Chilli/peppers"/>Chilli/peppers
+
+          <input type="checkbox" name="pizzaToppings" value="Garlic"/>Garlic
+
+          <input type="checkbox" name="pizzaToppings" value="Mozzarella cheese"/>Mozzarella cheese
+
+         <br><br>
+       </div>
+
+
+        <input type="button" id="submit" value="Submit Order" onclick="displayOrder()"/>
+
+
+        <input type ="reset" id="reset" value="Clear Entries"/>
+
+
+    </form>
+
+
+
+        <div id="pizza"></div>
+
+
+        <script>
+
+
+
+            function $(id)
+
+            {
+
+                return document.getElementById(id);
+
+            }
+
+
+            function displayOrder()
+
+            {
+
+                var name=$("txtName").value;
+
+                var address=$("txtAddress").value;
+
+                var city=$("txtCity").value;
+
+                var street=$("txtStreet").value;
+
+                var zip=$("txtZip").value;
+
+                var phone=$("txtPhone").value;
+
+                var email=$("txtEmail").value;
+
+
+
+                var pizzaSize=document.getElementsByName("pizzaSize");
+
+
+
+                var pizzaS;
+
+
+
+                for(var i=0;i<pizzaSize.length;i++)
+
+                {
+
+
+
+                    if(pizzaSize[i].checked==true)
+
+                    {
+
+
+
+                        pizzaS=pizzaSize[i].value+" ";
+
+                    }
+
+                }
+
+
+
+                var pizzaToppings=document.getElementsByName("pizzaToppings");
+
+
+
+                var pizzaTopp="";
+
+
+
+                for(var i=0;i<pizzaToppings.length;i++)
+
+                {
+
+
+
+                    if(pizzaToppings[i].checked==true)
+
+                    {
+
+
+
+                        pizzaTopp+=pizzaToppings[i].value+" , ";
+
+                    }
+
+                }
+
+                var htmlString="";
+
+                htmlString+="<b>Name : </b>"+name+"<br/><b>Address :  </b>"+address+"<br/>";
+
+                htmlString+="<b>City : </b>"+city+"<br/><b>Street :  </b>"+street+"<br/>";
+
+                htmlString+="<b>Zip : </b>"+zip+"<br/><b>Phone :  </b>"+phone+"<br/>";
+
+                htmlString+="<b>Email : </b>"+email+"<br/><b>Pizza Size :  </b>"+pizzaS+"<br/>";
+
+                htmlString+="<b>Toppings : </b>"+pizzaTopp+"<br/>";
+
+
+
+                $("pizza").innerHTML=htmlString;
+
+            }
+
+        </script>
+
+    </body>
+    </html>
